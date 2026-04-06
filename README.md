@@ -8,7 +8,7 @@ Juan David López Herrera – 1202726
 
 🎯 1. Objetivo General
 
-BlueBlock tiene como objetivo desarrollar una plataforma de comercio electrónico que permita a los usuarios buscar y comprar calzado deportivo de manera rápida, segura y accesible desde dispositivos web y móviles, integrando funcionalidades como catálogo filtrable, carrito de compras y pagos en línea; con ello, se busca solucionar la limitación de las tiendas físicas tradicionales, que restringen el acceso a variedad de productos, tallas y marcas, ofreciendo en su lugar una solución digital que amplía el alcance, mejora la experiencia de compra y facilita el acceso a calzado deportivo.
+BlueBlock tiene como objetivo desarrollar una plataforma de eCommerce que permita a los usuarios buscar y comprar calzado deportivo de manera rápida, segura y accesible desde dispositivos web y móviles, integrando funcionalidades como catálogo filtrable, carrito de compras y pagos en línea; con ello, se busca solucionar la limitación de las tiendas físicas tradicionales, que restringen el acceso a variedad de productos, tallas y marcas, ofreciendo en su lugar una solución digital que amplía el alcance, mejora la experiencia de compra y facilita el acceso a calzado deportivo.
 
 🌍 2. Contexto de Uso
 
