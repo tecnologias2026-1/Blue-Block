@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Block — Catálogo Fútbol</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+    <div class="container header">
+      <a href="index.html" class="logo">
+        <img src="https://www.figma.com/api/mcp/asset/0b0a317a-9ddc-4b78-8935-81c241975693" alt="Blue Block logo" />
+        <span>BLUE BLOCK</span>
+      </a>
+      <div class="header-actions">
+        <label class="search-bar">
+          <img src="https://www.figma.com/api/mcp/asset/9e64fd1a-f430-4a23-8748-9a72443de9ff" alt="Buscar" width="20" height="20" />
+          <input type="search" placeholder="Buscar Zapatos..." />
+        </label>
+        <a href="login.html" class="icon-btn" aria-label="Perfil de usuario">
+          <img src="https://www.figma.com/api/mcp/asset/3c0369a6-99d7-41ee-a2ed-f47b80189af0" alt="Usuario" width="24" height="24" />
+        </a>
+        <button class="icon-btn" aria-label="Carrito">
+          <img src="https://www.figma.com/api/mcp/asset/47825d7c-15de-4162-8e5c-85cafd023414" alt="Carrito" width="24" height="24" />
+        </button>
+      </div>
+    </div>
+    </header>
+
+    <main class="catalog-page">
+      <div class="container catalog-wrapper">
+        <aside class="catalog-filters">
+          <div class="filter-section">
+            <h3>Filtros</h3>
+            
+            <div class="filter-group">
+              <h4>Precio</h4>
+              <label class="checkbox-item">
+                <input type="checkbox" value="0-50" class="filter-price" />
+                <span>$0 - $50</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="50-100" class="filter-price" />
+                <span>$50 - $100</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="100-150" class="filter-price" />
+                <span>$100 - $150</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="150-999" class="filter-price" />
+                <span>$150+</span>
+              </label>
+            </div>
+
+            <div class="filter-group">
+              <h4>Marca</h4>
+              <label class="checkbox-item">
+                <input type="checkbox" value="nike" class="filter-brand" />
+                <span>Nike</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="adidas" class="filter-brand" />
+                <span>Adidas</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="puma" class="filter-brand" />
+                <span>Puma</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" value="newbalance" class="filter-brand" />
+                <span>New Balance</span>
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <section class="catalog-products">
+          <div class="catalog-header">
+            <div>
+              <h1>Fútbol</h1>
+              <p>Descubre nuestro catálogo completo de botas de fútbol premium</p>
+            </div>
+            <select class="sort-select">
+  <option value="default">Ordenar por: Relevancia</option>
+  <option value="price-asc">Precio: Menor a Mayor</option>
+  <option value="price-desc">Precio: Mayor a Menor</option>
+</select>
+          </div>
+
+          <div class="products-grid">
+
+  <article class="product-card" data-brand="nike" data-price="89">
+    <div class="product-image" style="background-image: url('https://www.figma.com/api/mcp/asset/fc942c91-e9fa-4c10-ae09-2678a6f616ad');">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Premium</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★★ (248)</p>
+      <div class="product-footer">
+        <span class="price">$89.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="adidas" data-price="129">
+    <div class="product-image" style="background-image: url('https://www.figma.com/api/mcp/asset/fc942c91-e9fa-4c10-ae09-2678a6f616ad');">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Elite</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★☆ (156)</p>
+      <div class="product-footer">
+        <span class="price">$129.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="nike" data-price="149">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Pro</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★★ (312)</p>
+      <div class="product-footer">
+        <span class="price">$149.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="puma" data-price="79">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Clásica</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★★ (203)</p>
+      <div class="product-footer">
+        <span class="price">$79.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="adidas" data-price="119">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Técnica</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★☆ (189)</p>
+      <div class="product-footer">
+        <span class="price">$119.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="nike" data-price="139">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Speed</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★★ (267)</p>
+      <div class="product-footer">
+        <span class="price">$139.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="nike" data-price="109">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Control</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★★ (298)</p>
+      <div class="product-footer">
+        <span class="price">$109.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+  <article class="product-card" data-brand="puma" data-price="99">
+    <div class="product-image">
+      <button class="favorite-btn">♡</button>
+    </div>
+    <div class="product-info">
+      <h3>Bota Fútbol Power</h3>
+      <p class="product-category">Fútbol</p>
+      <p class="product-rating">★★★★☆ (174)</p>
+      <div class="product-footer">
+        <span class="price">$99.99</span>
+        <button class="btn-add-cart">+</button>
+      </div>
+    </div>
+  </article>
+
+</div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>Blue Block</h3>
+            <p>La pasión es lo que nos mueve. Diseñamos calzado deportivo premium pensado para los atletas más exigentes.</p>
+          </div>
+          <div>
+            <h3>Tienda</h3>
+            <a href="#">Futbol</a>
+            <a href="#">Basket</a>
+            <a href="#">Atletismo</a>
+            <a href="#">Ciclismo</a>
+            <a href="#">Tenis</a>
+          </div>
+          <div>
+            <h3>Servicio al cliente</h3>
+            <a href="#">Contáctanos</a>
+            <a href="#">Guía de tallas</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div>
+            <h3>Contact Info</h3>
+            <p>123 Athletic Avenue</p>
+            <p>Sports District, NY 10001</p>
+            <p>+1 (555) 123-4567</p>
+            <p>support@blueblock.com</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Blue Block. Todos los derechos reservados.</p>
+          <div class="footer-links">
+            <a href="#">Política de privacidad</a>
+            <a href="#">Términos de servicio</a>
+            <a href="#">Política de cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+<script src="script.js"></script>
+  </body>
+</html>
