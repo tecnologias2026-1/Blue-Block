@@ -43,12 +43,6 @@ RF12: El sistema debe generar una confirmación del pedido.
 
 RF13: El usuario debe poder consultar el estado de sus pedidos.
 
-RF14: El administrador debe poder gestionar pedidos.
-
-RF15: El administrador debe poder gestionar productos.
-
-RF16: El administrador debe gestionar categorías.
-
 3.2 Requerimientos No Funcionales
 
 RNF01: El sistema debe ser responsive.
