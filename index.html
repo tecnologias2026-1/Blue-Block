@@ -13,17 +13,17 @@
   <div class="page">
     <header>
       <div class="header-inner">
-        <div class="brand">
+        <a class="brand" href="index.html" aria-label="Ir a la página principal">
           <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" width="44" height="44" />
           BLUE BLOCK
-        </div>
+        </a>
         <div class="header-actions">
           <label class="search">
             <input type="search" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" />
           </label>
-          <button class="icon-button" aria-label="Perfil de usuario">
+          <a class="icon-button" href="login.html" aria-label="Ir a iniciar sesión">
             <img src="https://www.figma.com/api/mcp/asset/80f90121-21ca-422c-8392-5de559cc6ec8" alt="Usuario" width="24" height="24" />
-          </button>
+          </a>
           <button class="icon-button" aria-label="Carrito de compras">
             <img src="https://www.figma.com/api/mcp/asset/82520b3c-c8d5-4c25-8bbe-08a97ccb19f0" alt="Carrito" width="24" height="24" />
           </button>
@@ -39,7 +39,7 @@
               Comprar ahora
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5" fill="currentColor"/></svg>
             </button>
-            <button class="btn btn-secondary">Explorar Categorias</button>
+            <a class="btn btn-secondary" href="#categorias">Explorar Categorias</a>
           </div>
         </div>
         <div class="hero-image">
@@ -48,7 +48,7 @@
       </section>
     </header>
 
-    <section>
+    <section id="categorias">
       <h2 class="section-title">Categorias</h2>
       <div class="category-grid">
         <article class="category-card">
