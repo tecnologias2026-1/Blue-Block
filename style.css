@@ -39,11 +39,6 @@ body {
   #categorias {
     scroll-margin-top: 60px;
   }
-
-  body {
-    background: linear-gradient(180deg, var(--bg-dark) 0%, #0a2b66 22%, #0ea5e9 100%);
-    background-attachment: scroll;
-  }
 }
 
 img {
@@ -156,18 +151,9 @@ header {
   justify-content: flex-end;
   width: 100%;
   min-width: 0;
-  background: none;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-  backdrop-filter: none;
-  border-radius: 0;
 }
 
-.header-actions::before,
-.header-actions::after {
-  content: none;
-}
+
 
 .search {
   flex: 1 1 300px;
@@ -193,11 +179,15 @@ header {
 
 @media (max-width: 768px) {
   .search {
-    flex: 1 1 120px;
-    max-width: 180px;
-    min-height: 36px;
-    padding: 8px 12px 8px 36px;
+    flex: 0 0 44px;
+    width: 44px;
+    max-width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
     font-size: 14px;
+    display: grid;
+    place-items: center;
   }
 }
 
@@ -216,9 +206,11 @@ header {
 
 @media (max-width: 768px) {
   .search::before {
-    width: 16px;
-    height: 16px;
-    left: 12px;
+    width: 18px;
+    height: 18px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -230,6 +222,19 @@ header {
   color: rgba(255,255,255,0.8);
   font-size: 16px;
   line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .search input {
+    opacity: 0;
+    font-size: 0;
+    line-height: 0;
+    cursor: pointer;
+  }
+
+  .search input::placeholder {
+    color: transparent;
+  }
 }
 
 .icon-button {
@@ -274,6 +279,7 @@ header {
   align-items: center;
   position: relative;
   z-index: 1;
+  padding: 0px 40px;
 }
 
 .hero-copy {
@@ -515,8 +521,13 @@ header {
 
 @media (max-width: 1120px) {
   .hero {
+    padding-top: 40px;
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  .hero-image {
+    margin: 0 auto;
   }
 
   .category-grid .category-card {
@@ -525,12 +536,8 @@ header {
 }
 
 @media (max-width: 820px) {
-  .page {
-    padding: 24px 0 40px;
-  }
-
   .hero {
-    padding-top: 40px;
+    padding-top: 32px;
   }
 
   .hero-copy {
@@ -544,8 +551,6 @@ header {
   .category-grid .category-card {
     flex: 0 1 280px;
   }
-
-
 
   .footer-inner {
     grid-template-columns: 1fr;
@@ -743,7 +748,8 @@ header {
 }
 
 .login-divider {
-  position: relative;
+  display: flex;
+  align-items: center;
   text-align: center;
   margin: 32px 0;
   color: #99a1af;
@@ -756,19 +762,14 @@ header {
 .login-divider::before,
 .login-divider::after {
   content: '';
-  position: absolute;
-  top: 50%;
-  width: calc(50% - 60px);
+  flex: 1;
   height: 1px;
   background: #e5e7eb;
 }
 
-.login-divider::before {
-  left: 0;
-}
-
-.login-divider::after {
-  right: 0;
+.login-divider span {
+  margin: 0 12px;
+  white-space: nowrap;
 }
 
 .social-login {
