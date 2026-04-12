@@ -480,6 +480,10 @@ header {
     padding: 24px 0 40px;
   }
 
+  .hero {
+    padding-top: 40px;
+  }
+
   .hero-copy {
     gap: 28px;
   }
@@ -500,6 +504,10 @@ header {
 }
 
 @media (max-width: 520px) {
+  .hero {
+    padding-top: 32px;
+  }
+
   .hero-copy h1 {
     font-size: 2.7rem;
   }
