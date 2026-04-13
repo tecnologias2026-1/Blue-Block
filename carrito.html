@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blue Block</title>
+  <title>Carrito - Blue Block</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="cart-page">
   <div class="page">
     <header>
       <div class="header-inner">
@@ -29,66 +29,47 @@
           </a>
         </div>
       </div>
-
-      <section class="hero">
-        <div class="hero-copy">
-          <h1>Todos Hemos <span class="accent">Venido a ganar</span></h1>
-          <p>Calzado deportivo premium diseñado para atletas que exigen excelencia. Experimenta la combinación perfecta de estilo, comodidad y rendimiento.</p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" type="button" onclick="window.location.href='catalogo.html'">
-              Comprar ahora
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5" fill="currentColor"/></svg>
-            </button>
-            <a class="btn btn-secondary" href="#categorias">Explorar Categorias</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="https://www.figma.com/api/mcp/asset/8118b979-c5b3-4446-ade0-e47683d5a070" alt="Hero shoe" />
-        </div>
-      </section>
     </header>
 
-    <section id="categorias">
-      <h2 class="section-title">Categorias</h2>
-      <div class="category-grid">
-        <article class="category-card">
-          <img src="https://www.figma.com/api/mcp/asset/c1213dbb-339e-49c6-89c8-ab0a4a7cdcea" alt="Atletismo" />
-          <div class="category-content">
-            <h3>Atletismo</h3>
-            <a href="#">Comprar ahora</a>
-          </div>
-        </article>
-        <article class="category-card">
-          <img src="https://www.figma.com/api/mcp/asset/5969c5f4-7c55-4c89-bb45-765792f51e05" alt="Futbol" />
-          <div class="category-content">
-            <h3>Futbol</h3>
-            <a href="#">Comprar ahora</a>
-          </div>
-        </article>
-        <article class="category-card">
-          <img src="https://www.figma.com/api/mcp/asset/2025e942-1f65-474e-913b-b1f8be5aa5f6" alt="Tenis" />
-          <div class="category-content">
-            <h3>Tenis</h3>
-            <a href="#">Comprar ahora</a>
-          </div>
-        </article>
-        <article class="category-card">
-          <img src="https://www.figma.com/api/mcp/asset/47ffc77f-15cf-4702-a6a2-c2cdea83feaa" alt="Ciclismo" />
-          <div class="category-content">
-            <h3>Ciclismo</h3>
-            <a href="#">Comprar ahora</a>
-          </div>
-        </article>
-        <article class="category-card">
-          <img src="https://www.figma.com/api/mcp/asset/816bc2bc-7009-46e0-940f-37164410040b" alt="Basketball" />
-          <div class="category-content">
-            <h3>Basketball</h3>
-            <a href="#">Comprar ahora</a>
-          </div>
-        </article>
-      </div>
-    </section>
+    <main class="cart-main" aria-label="Productos en el carrito">
+      <a class="cart-back-link" href="catalogo.html" aria-label="Volver al catálogo">← Seguir comprando</a>
+
+      <section id="cart-list" class="cart-list" aria-live="polite"></section>
+
+      <section class="cart-summary" id="cart-summary" aria-label="Resumen de compra">
+        <p class="cart-total-label">Total:</p>
+        <p class="cart-total-value" id="cart-total">$0</p>
+      </section>
+
+      <button class="cart-checkout-btn" id="cart-checkout" type="button">Checkout</button>
+      <button class="cart-clear-btn" id="cart-clear" type="button">Vaciar carrito</button>
+    </main>
   </div>
+
+  <template id="cart-item-template">
+    <article class="cart-item" data-cart-id="">
+      <div class="cart-item-image-wrap">
+        <img class="cart-item-image" src="" alt="" />
+      </div>
+
+      <div class="cart-item-info">
+        <p class="cart-item-category"></p>
+        <h2 class="cart-item-name"></h2>
+        <p class="cart-item-price"></p>
+        <p class="cart-item-size"></p>
+      </div>
+
+      <div class="cart-item-actions">
+        <div class="cart-quantity-control" aria-label="Control de cantidad">
+          <button type="button" class="cart-qty-btn" data-action="decrease" aria-label="Disminuir cantidad">-</button>
+          <span class="cart-qty-value">1</span>
+          <button type="button" class="cart-qty-btn" data-action="increase" aria-label="Aumentar cantidad">+</button>
+        </div>
+
+        <button type="button" class="cart-remove-btn" data-action="remove" aria-label="Eliminar producto">×</button>
+      </div>
+    </article>
+  </template>
 
   <footer class="footer">
     <div class="page footer-page">
@@ -135,5 +116,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="carrito.js"></script>
 </body>
 </html>

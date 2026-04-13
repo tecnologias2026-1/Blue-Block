@@ -93,7 +93,7 @@ const productos = {
   14: {
     nombre: 'Yellow Thunder Sun',
     precio: 630000,
-    imagen: 'https://www.figma.com/api/mcp/asset/429baaa2-b73a-4405-9f2b-add02f663e2e',
+    imagen: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/00740a73b45dc6779b3ad00c98e24cea.jpg?imageMogr2/auto-orient|imageView2/2/w/800/q/70/format/webp',
     categoria: 'BASKETBALL',
     rating: '4.8 (312)'
   },
@@ -156,6 +156,9 @@ const totalValueEl = document.getElementById('total-value');
 const increaseBtn = document.getElementById('increase-qty');
 const decreaseBtn = document.getElementById('decrease-qty');
 const sizeButtons = document.querySelectorAll('.size-pill');
+const addToCartBtn = document.querySelector('.add-to-cart-btn');
+
+const CART_STORAGE_KEY = 'blueblock_cart';
 
 let quantity = 1;
 
@@ -190,6 +193,58 @@ function updateTotal() {
   quantityValueEl.textContent = String(quantity);
 }
 
+function getCategoryInSpanish(category) {
+  const categories = {
+    FOOTBALL: 'FUTBOL',
+    BASKETBALL: 'BASKET',
+    CYCLING: 'CICLISMO',
+    ATHLETICS: 'ATLETISMO',
+    TENIS: 'TENIS'
+  };
+
+  return categories[category] || category;
+}
+
+function getSelectedSize() {
+  const activeSize = document.querySelector('.size-pill.is-active');
+  return activeSize ? activeSize.textContent.trim() : '7';
+}
+
+function readCart() {
+  try {
+    const rawCart = localStorage.getItem(CART_STORAGE_KEY);
+    return rawCart ? JSON.parse(rawCart) : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function addToCart() {
+  const selectedSize = getSelectedSize();
+  const cart = readCart();
+
+  const existingProduct = cart.find(
+    (item) => item.nombre === productoSeleccionado.nombre && item.talla === selectedSize
+  );
+
+  if (existingProduct) {
+    existingProduct.cantidad += quantity;
+  } else {
+    cart.push({
+      id: `${productId}-${selectedSize}`,
+      nombre: productoSeleccionado.nombre,
+      precio: productoSeleccionado.precio,
+      imagen: productoSeleccionado.imagen,
+      categoria: getCategoryInSpanish(productoSeleccionado.categoria),
+      cantidad: quantity,
+      talla: selectedSize
+    });
+  }
+
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  window.location.href = 'carrito.html';
+}
+
 increaseBtn.addEventListener('click', () => {
   quantity += 1;
   updateTotal();
@@ -213,6 +268,10 @@ sizeButtons.forEach((button) => {
     button.setAttribute('aria-pressed', 'true');
   });
 });
+
+if (addToCartBtn) {
+  addToCartBtn.addEventListener('click', addToCart);
+}
 
 renderProduct(productoSeleccionado);
 updateTotal();
