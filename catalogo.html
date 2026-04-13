@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo - Blue Block</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="catalog-page">
+  <div class="page">
+    <header style="min-height: auto;">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Ir a la página principal">
+          <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" width="44" height="44" />
+          BLUE BLOCK
+        </a>
+        <div class="header-actions" id="headerActions">
+          <label class="search search-container" id="mobileSearchContainer">
+            <input type="search" id="searchInput" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" autocomplete="off" />
+            <button type="button" class="search-close-btn" id="mobileSearchClose" aria-label="Cerrar buscador">&#10005;</button>
+            <div id="sugerencias" class="search-suggestions sugerencias"></div>
+          </label>
+          <a class="icon-button" href="login.html" aria-label="Ir a iniciar sesión">
+            <img src="https://www.figma.com/api/mcp/asset/80f90121-21ca-422c-8392-5de559cc6ec8" alt="Usuario" width="24" height="24" />
+          </a>
+          <a class="icon-button" href="carrito.html" aria-label="Ir al carrito de compras">
+            <img src="https://www.figma.com/api/mcp/asset/82520b3c-c8d5-4c25-8bbe-08a97ccb19f0" alt="Carrito" width="24" height="24" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="catalog-main">
+      <section class="catalog-layout">
+        <aside class="filters-sidebar" aria-label="Panel de filtros">
+          <h2 class="filters-title">Filtros</h2>
+
+          <div class="filters-group">
+            <h3 class="filters-subtitle">Categoría</h3>
+            <label class="filter-option" for="filter-futbol">
+              <input type="checkbox" id="filter-futbol" value="futbol" class="filter-category" name="category" />
+              <span>Fútbol</span>
+            </label>
+            <label class="filter-option" for="filter-basket">
+              <input type="checkbox" id="filter-basket" value="basket" class="filter-category" name="category" />
+              <span>Basket</span>
+            </label>
+            <label class="filter-option" for="filter-atletismo">
+              <input type="checkbox" id="filter-atletismo" value="atletismo" class="filter-category" name="category" />
+              <span>Atletismo</span>
+            </label>
+            <label class="filter-option" for="filter-ciclismo">
+              <input type="checkbox" id="filter-ciclismo" value="ciclismo" class="filter-category" name="category" />
+              <span>Ciclismo</span>
+            </label>
+            <label class="filter-option" for="filter-tenis">
+              <input type="checkbox" id="filter-tenis" value="tenis" class="filter-category" name="category" />
+              <span>Tenis</span>
+            </label>
+          </div>
+
+          <div class="filters-group">
+            <h3 class="filters-subtitle">Precio</h3>
+            <div class="price-slider-wrap">
+              <p class="price-range-value">
+                <span id="price-min-value">$0</span>
+                <span>-</span>
+                <span id="price-max-value">$0</span>
+              </p>
+
+              <div class="price-slider" id="price-slider-track">
+                <input type="range" id="filter-min-price" min="0" max="1000000" step="1000" value="0" aria-label="Precio mínimo" />
+                <input type="range" id="filter-max-price" min="0" max="1000000" step="1000" value="1000000" aria-label="Precio máximo" />
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="clear-filters-btn" id="clear-filters">Deshacer filtro</button>
+        </aside>
+
+        <div class="catalog-products-wrap">
+          <div class="product-grid" id="contenedor-productos">
+            <article class="login-form product-card" data-category="futbol" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/a202c083-0aee-468c-ab01-bed585b5dac4" alt="Aqua Flash WT" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">FÚTBOL</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Aqua Flash WT</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.7 (186)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$322.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="futbol" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/fa206d66-1b70-478d-81cd-f3e0a7dd4dc4" alt="Purple Galaxy WAO" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">FÚTBOL</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Purple Galaxy WAO</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.7 (186)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$470.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="futbol" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/9a773fae-72a5-4816-a654-9a0b1d8a00d2" alt="Black Volt Strike FG" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">FÚTBOL</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Black Volt Strike FG</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (234)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$445.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="futbol" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/60052f18-06da-4bb6-bc9b-4451dd92ebd7" alt="Gold Kick Fire SSR" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">FÚTBOL</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Gold Kick Fire SSR</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★★</span>
+                  <span style="color: #4a5565; font-size: 14px;">5.0 (319)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$750.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="basket" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/0908fb06-d452-42de-b1ea-2ab922e25cdc" alt="Red Inferno MGM" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">BASKETBALL</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Red Inferno MGM</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$742.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="ciclismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/797dacac-bdb7-4549-9c1f-d0543d5ae775" alt="Sio White Boa Pro" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">CICLISMO</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Sio White Boa Pro</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$701.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="tenis" style="padding: 0; max-width: none; overflow: hidden; position: relative;">
+              <img src="https://www.figma.com/api/mcp/asset/6c5579a4-027b-4dc7-9567-7e0bb5e9380d" alt="Asics Gel Purple Dedicate" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">TENIS</p>
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Asics Gel Purple Dedicate</h3>
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span>
+                  <span style="color: #4a5565; font-size: 14px;">4.7 (312)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$720.000 COP</p>
+                  
+                </div>
+              </div>
+            </article>
+
+            <article class="login-form product-card" data-category="tenis" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+                <img src="https://www.figma.com/api/mcp/asset/f115ad83-5cbe-48b9-9c51-7282f13a832a" alt="Ascis Gel Navy Mint" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+                <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                    <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">TENIS</p> 
+                    <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Ascis Gel Navy Mint</h3> 
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                        <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                        <span style="color: #4a5565; font-size: 14px;">4.7 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                    <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$720.000 COP</p> 
+                     
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="atletismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/66a62f3c-e693-4453-968a-2c74c2fc8215" alt="DreamEagle Golden Sprint" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">ATLETISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">DreamEagle Golden Sprint</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$590.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="basket" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/b6b2f49d-9acc-4ca9-b944-745eac8d4a4d" alt="Black Neon Zeros" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">BASKETBALL</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Black Neon Zeros</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$822.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="ciclismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/c2d12040-9f9b-4664-bfbc-e74e8acdb9e8" alt="North Yellow Flash" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">CICLISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">North Yellow Flash</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$750.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="tenis" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/462ce1b7-cded-4484-b7be-89fedae2fd89" alt="Wilson Oran Brush" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">TENIS</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Wilson Oran Brush</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.7 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$580.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="ciclismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/3d8aa20a-f382-4cd6-9433-44d51f860595" alt="KTM Black Road" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">CICLISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">KTM Black Road</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$810.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="basket" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/00740a73b45dc6779b3ad00c98e24cea.jpg?imageMogr2/auto-orient|imageView2/2/w/800/q/70/format/webp" alt="Yellow Thunder Sun" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">BASKETBALL</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Yellow Thunder Sun</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$630.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="atletismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/45df6c55-bc31-4c4c-8440-218c01e9a779" alt="Sio Black Dinamis" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">ATLETISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Sio Black Dinamis</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$690.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="atletismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/2c88fcc3-2480-407d-9c73-a655ceeba7b4" alt="Lima Starlight Run" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">ATLETISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Lima Starlight Run</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$660.900 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="basket" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/7c5d45d6-0653-492b-93d5-3eb3a8463b93" alt="White Purple Galaxy High" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">BASKETBALL</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">White Purple Galaxy High</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$721.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="tenis" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/3efd5271-7e13-474f-ac89-7ce5d7a74a16" alt="Wilson Naby Brush" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">TENIS</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Wilson Naby Brush</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$670.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="atletismo" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/dfdcf226-00aa-49a6-8009-bf5e6c4cae65" alt="Blue Thunder Spike" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">ATLETISMO</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Blue Thunder Spike</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$510.000 COP</p>  
+                </div> 
+              </div> 
+            </article> 
+            
+            <article class="login-form product-card" data-category="basket" style="padding: 0; max-width: none; overflow: hidden; position: relative;"> 
+              <img src="https://www.figma.com/api/mcp/asset/20de875e-2124-4d18-8234-68966825d86b" alt="Gray Black Whitred" style="width: 100%; height: 300px; object-fit: cover; display: block;" /> 
+              <div style="padding: 12px 16px 16px; background: #f3f4f6;"> 
+                <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">BASKETBALL</p> 
+                <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">Gray Black Whitred</h3> 
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;"> 
+                  <span style="color: #facc15; font-size: 16px; letter-spacing: 1px;">★★★★☆</span> 
+                  <span style="color: #4a5565; font-size: 14px;">4.8 (312)</span> 
+                </div> 
+                <div style="display: flex; align-items: center; gap: 12px;"> 
+                  <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">$910.000 COP</p>  
+                </div> 
+              </div> 
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="page footer-page">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <div class="footer-brand">
+            <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" />
+            BLUE BLOCK
+          </div>
+          <p>La pasión es lo que me hace seguir adelante.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Tienda</h4>
+          <a href="catalogo.html?categoria=futbol">Futbol</a>
+          <a href="catalogo.html?categoria=basket">Basket</a>
+          <a href="catalogo.html?categoria=atletismo">Atletismo</a>
+          <a href="catalogo.html?categoria=ciclismo">Ciclismo</a>
+          <a href="catalogo.html?categoria=tenis">Tenis</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Servicio al cliente</h4>
+          <a href="#">Contactanos</a>
+          <a href="#">Guía de tallas</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contacto</h4>
+          <span>123 Athletic Avenue<br>Sports District, NY 10001</span>
+          <a href="tel:+15551234567">+1 (555) 123-4567</a>
+          <a href="mailto:support@blueblock.com">support@blueblock.com</a>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <span>© 2026 Blue Block. Todos los derechos reservados.</span>
+        <div class="footer-links">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de servicio</a>
+          <a href="#">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="search.js"></script>
+  <script src="catalogo.js"></script>
+</body>
+</html>
