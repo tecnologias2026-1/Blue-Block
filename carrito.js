@@ -182,4 +182,8 @@ cartClearEl.addEventListener('click', () => {
   renderCart();
 });
 
+cartCheckoutEl.addEventListener('click', () => {
+  window.location.href = 'checkout.html';
+});
+
 renderCart();

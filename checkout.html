@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Blue Block</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="checkout-page">
+  <div class="page">
+    <header>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Ir a la página principal">
+          <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" width="44" height="44" />
+          BLUE BLOCK
+        </a>
+        <div class="header-actions">
+          <label class="search">
+            <input type="search" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" />
+          </label>
+          <a class="icon-button" href="login.html" aria-label="Ir a iniciar sesión">
+            <img src="https://www.figma.com/api/mcp/asset/80f90121-21ca-422c-8392-5de559cc6ec8" alt="Usuario" width="24" height="24" />
+          </a>
+          <a class="icon-button" href="carrito.html" aria-label="Ir al carrito de compras">
+            <img src="https://www.figma.com/api/mcp/asset/82520b3c-c8d5-4c25-8bbe-08a97ccb19f0" alt="Carrito" width="24" height="24" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="checkout-main" aria-label="Proceso de pago">
+      <a href="carrito.html" class="back-link">← Volver al carrito</a>
+
+      <section class="checkout-grid">
+        <article class="checkout-card checkout-form-card" aria-labelledby="checkout-payment-title">
+          <h1 id="checkout-payment-title" class="checkout-title">Informacion de Pago</h1>
+
+          <form id="checkout-form" class="checkout-form" novalidate>
+            <div class="checkout-group">
+              <label for="checkout-email">Correo Electronico</label>
+              <input id="checkout-email" name="email" type="email" placeholder="correo@ejemplo.com" required />
+            </div>
+
+            <div class="checkout-group">
+              <label for="checkout-card-number">Numero de Tarjeta</label>
+              <input id="checkout-card-number" name="cardNumber" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" required />
+            </div>
+
+            <div class="checkout-group">
+              <label for="checkout-card-name">Nombre del Titular</label>
+              <input id="checkout-card-name" name="cardName" type="text" placeholder="Nombre completo" required />
+            </div>
+
+            <div class="checkout-row-2">
+              <div class="checkout-group">
+                <label for="checkout-expiry">Fecha de vencimiento</label>
+                <input id="checkout-expiry" name="expiry" type="text" inputmode="numeric" placeholder="MM/AA" maxlength="5" required />
+              </div>
+
+              <div class="checkout-group">
+                <label for="checkout-cvv">CVV</label>
+                <input id="checkout-cvv" name="cvv" type="text" inputmode="numeric" placeholder="123" maxlength="4" required />
+              </div>
+            </div>
+
+            <h2 class="checkout-subtitle">Direccion de Facturacion</h2>
+
+            <div class="checkout-group">
+              <label for="checkout-address">Direccion</label>
+              <input id="checkout-address" name="address" type="text" placeholder="Calle, numero, apartamento" required />
+            </div>
+
+            <div class="checkout-row-2">
+              <div class="checkout-group">
+                <label for="checkout-city">Ciudad</label>
+                <input id="checkout-city" name="city" type="text" placeholder="Ciudad" required />
+              </div>
+
+              <div class="checkout-group">
+                <label for="checkout-postal">Codigo Postal</label>
+                <input id="checkout-postal" name="postalCode" type="text" inputmode="numeric" placeholder="000000" required />
+              </div>
+            </div>
+
+            <button id="checkout-save-btn" class="checkout-buy-btn" type="button">Guardar</button>
+            <p id="checkout-save-feedback" class="checkout-save-feedback" aria-live="polite"></p>
+          </form>
+        </article>
+
+        <aside class="checkout-card checkout-summary-card" aria-labelledby="checkout-summary-title">
+          <h2 id="checkout-summary-title" class="checkout-title">Resumen del Pedido</h2>
+
+          <section id="checkout-items" class="checkout-items" aria-live="polite"></section>
+
+          <section class="checkout-totals" aria-label="Totales del pedido">
+            <p><span>Subtotal</span><strong id="checkout-subtotal">$0</strong></p>
+            <p><span>Envio</span><strong id="checkout-shipping">$0</strong></p>
+            <p class="checkout-total-line"><span>Total</span><strong id="checkout-total">$0</strong></p>
+          </section>
+
+          <section class="checkout-payment-methods" aria-label="Metodos de pago">
+            <h3>Metodos de pago</h3>
+            <div class="checkout-payment-icons">
+              <span>Visa</span>
+              <span>Mastercard</span>
+              <span>Amex</span>
+            </div>
+          </section>
+
+          <div class="checkout-secure-box" role="status">Pago 100% Seguro</div>
+
+          <button id="checkout-confirm-btn" class="checkout-confirm-btn" type="button">CONFIRMA COMPRA</button>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <template id="checkout-item-template">
+    <article class="checkout-item" data-checkout-id="">
+      <img class="checkout-item-image" src="" alt="" />
+      <div class="checkout-item-info">
+        <h3 class="checkout-item-name"></h3>
+        <p class="checkout-item-size"></p>
+        <p class="checkout-item-qty"></p>
+      </div>
+      <p class="checkout-item-price"></p>
+    </article>
+  </template>
+
+  <footer class="footer">
+    <div class="page footer-page">
+      <div class="footer-inner">
+        <div class="footer-column">
+          <div class="footer-brand">
+            <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" />
+            BLUE BLOCK
+          </div>
+          <p>La pasión es lo que me hace seguir adelante.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Tienda</h4>
+          <a href="#">Futbol</a>
+          <a href="#">Basket</a>
+          <a href="#">Atletismo</a>
+          <a href="#">Ciclismo</a>
+          <a href="#">Tenis</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Servicio al cliente</h4>
+          <a href="#">Contactanos</a>
+          <a href="#">Guía de tallas</a>
+          <a href="#">FAQ</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact Info</h4>
+          <span>123 Athletic Avenue<br>Sports District, NY 10001</span>
+          <a href="tel:+15551234567">+1 (555) 123-4567</a>
+          <a href="mailto:support@blueblock.com">support@blueblock.com</a>
+        </div>
+      </div>
+
+      <div class="footer-row">
+        <span>© 2026 Blue Block. Todos los derechos reservados.</span>
+        <div class="footer-links">
+          <a href="#">Política de privacidad</a>
+          <a href="#">Términos de servicio</a>
+          <a href="#">Política de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>
