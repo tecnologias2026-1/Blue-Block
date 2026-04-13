@@ -63,6 +63,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow: visible;
 }
 
 .login-page header {
@@ -84,7 +85,7 @@ header {
   justify-content: space-between;
   gap: 24px;
   flex-wrap: nowrap;
-  overflow-x: hidden;
+  overflow: visible;
   margin-bottom: 40px;
   background: none;
   background-color: transparent;
@@ -151,6 +152,7 @@ header {
   justify-content: flex-end;
   width: 100%;
   min-width: 0;
+  overflow: visible;
 }
 
 
@@ -166,6 +168,14 @@ header {
   padding: 10px 16px 10px 44px;
   color: rgba(255,255,255,0.8);
   min-width: 0;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 448px;
+  z-index: 1000;
+  overflow: visible;
 }
 
 @media (max-width: 1024px) {
@@ -188,6 +198,10 @@ header {
     font-size: 14px;
     display: grid;
     place-items: center;
+  }
+
+  .search-container {
+    max-width: 44px;
   }
 }
 
@@ -222,6 +236,70 @@ header {
   color: rgba(255,255,255,0.8);
   font-size: 16px;
   line-height: 1.4;
+}
+
+.sugerencias,
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.sugerencias.activo,
+.search-suggestions.activo {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sugerencia-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: none;
+  background: #ffffff;
+  color: #111827;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sugerencia-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.sugerencia-item span {
+  font-size: 14px;
+  color: #333333;
+}
+
+.sugerencia-item:hover {
+  background: #f5f7fa;
+}
+
+.sugerencia-empty {
+  color: #6b7280;
+  cursor: default;
+}
+
+.sugerencia-empty:hover {
+  background: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -1326,6 +1404,17 @@ article.login-form[data-product-id] button[aria-label*="favoritos"] {
 .catalog-page main > section > div[style*="flex: 1 1 760px"] > div {
   gap: 28px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.no-results {
+  margin: 24px 0 0;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #111827;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
 }
 
 /* Cart Page */

@@ -18,8 +18,9 @@
           BLUE BLOCK
         </a>
         <div class="header-actions">
-          <label class="search">
-            <input type="search" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" />
+          <label class="search search-container">
+            <input type="search" id="searchInput" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" autocomplete="off" />
+            <div id="sugerencias" class="search-suggestions sugerencias"></div>
           </label>
           <a class="icon-button" href="login.html" aria-label="Ir a iniciar sesión">
             <img src="https://www.figma.com/api/mcp/asset/80f90121-21ca-422c-8392-5de559cc6ec8" alt="Usuario" width="24" height="24" />
@@ -135,5 +136,7 @@
       </div>
     </div>
   </footer>
+
+  <script src="search.js"></script>
 </body>
 </html>

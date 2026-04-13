@@ -6,12 +6,15 @@ const clearFiltersButton = document.getElementById('clear-filters');
 const minPriceValue = document.getElementById('price-min-value');
 const maxPriceValue = document.getElementById('price-max-value');
 const priceTrack = document.getElementById('price-slider-track');
+const searchInput = document.getElementById('searchInput');
+const catalogProductsWrap = document.querySelector('.catalog-products-wrap');
 
 const params = new URLSearchParams(window.location.search);
 const categoriaURL = (params.get('categoria') || '').toLowerCase();
 
 const RANGE_STEP = 1000;
 let priceBounds = { min: 0, max: 1000000 };
+let noResultsMessage = null;
 
 function parsePriceFromCard(card) {
   const priceText = Array.from(card.querySelectorAll('p'))
@@ -30,6 +33,7 @@ function setupProductCards() {
 
     card.dataset.productId = String(productId);
     card.dataset.price = String(productPrice);
+    card.dataset.name = productName.toLowerCase();
 
     if (!card.querySelector('.product-card-link')) {
       const cardLink = document.createElement('a');
@@ -60,6 +64,12 @@ function setupProductCards() {
   maxPriceInput.value = String(maxBound);
 
   updatePriceUI(minBound, maxBound);
+
+  noResultsMessage = document.createElement('p');
+  noResultsMessage.className = 'no-results';
+  noResultsMessage.textContent = 'No se encontraron productos';
+  noResultsMessage.hidden = true;
+  catalogProductsWrap.appendChild(noResultsMessage);
 }
 
 function formatCop(value) {
@@ -104,18 +114,31 @@ function applyFilters() {
 
   const minPrice = Number(minPriceInput.value || priceBounds.min);
   const maxPrice = Number(maxPriceInput.value || priceBounds.max);
+  const searchValue = (searchInput?.value || '').trim().toLowerCase();
+  let visibleCount = 0;
 
   updatePriceUI(minPrice, maxPrice);
 
   productCards.forEach((card) => {
     const category = card.dataset.category || '';
     const price = Number(card.dataset.price || '0');
+    const productName = card.dataset.name || '';
 
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
     const matchesPrice = price >= minPrice && price <= maxPrice;
+    const matchesSearch = !searchValue || productName.includes(searchValue);
 
-    card.style.display = matchesCategory && matchesPrice ? 'block' : 'none';
+    const isVisible = matchesCategory && matchesPrice && matchesSearch;
+    card.style.display = isVisible ? 'block' : 'none';
+
+    if (isVisible) {
+      visibleCount += 1;
+    }
   });
+
+  if (noResultsMessage) {
+    noResultsMessage.hidden = visibleCount !== 0;
+  }
 }
 
 function resetFilters() {
@@ -143,6 +166,8 @@ function bindFilterEvents() {
     normalizeRangeValues('max');
     applyFilters();
   });
+
+  searchInput?.addEventListener('input', applyFilters);
 
   clearFiltersButton.addEventListener('click', resetFilters);
 }
