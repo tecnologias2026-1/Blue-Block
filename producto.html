@@ -17,9 +17,10 @@
           <img src="https://www.figma.com/api/mcp/asset/61670ebb-6261-4408-ac93-6e5aacecbcfd" alt="Logo" width="44" height="44" />
           BLUE BLOCK
         </a>
-        <div class="header-actions">
-          <label class="search search-container">
+        <div class="header-actions" id="headerActions">
+          <label class="search search-container" id="mobileSearchContainer">
             <input type="search" id="searchInput" placeholder="Buscar Zapatos..." aria-label="Buscar Zapatos" autocomplete="off" />
+            <button type="button" class="search-close-btn" id="mobileSearchClose" aria-label="Cerrar buscador">&#10005;</button>
             <div id="sugerencias" class="search-suggestions sugerencias"></div>
           </label>
           <a class="icon-button" href="login.html" aria-label="Ir a iniciar sesión">

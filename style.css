@@ -198,10 +198,71 @@ header {
     font-size: 14px;
     display: grid;
     place-items: center;
+    transition: width 0.24s ease, max-width 0.24s ease, padding 0.24s ease, border-color 0.24s ease, background-color 0.24s ease;
   }
 
   .search-container {
     max-width: 44px;
+    transition: flex-basis 0.24s ease, max-width 0.24s ease;
+  }
+
+  .header-actions.search-expanded {
+    gap: 0;
+  }
+
+  .header-actions.search-expanded .icon-button {
+    opacity: 0;
+    transform: scale(0.92);
+    pointer-events: none;
+    width: 0;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .search-container.is-expanded {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .search.is-expanded {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 10px 44px 10px 38px;
+    place-items: initial;
+  }
+}
+
+.search-close-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .search-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255,255,255,0.9);
+    font-size: 14px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .search.is-expanded .search-close-btn {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -225,6 +286,12 @@ header {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: left 0.24s ease, transform 0.24s ease;
+  }
+
+  .search.is-expanded::before {
+    left: 14px;
+    transform: translateY(-50%);
   }
 }
 
@@ -308,10 +375,23 @@ header {
     font-size: 0;
     line-height: 0;
     cursor: pointer;
+    transition: opacity 0.2s ease, font-size 0.2s ease;
   }
 
   .search input::placeholder {
     color: transparent;
+  }
+
+  .search.is-expanded input {
+    opacity: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: text;
+    padding-right: 30px;
+  }
+
+  .search.is-expanded input::placeholder {
+    color: rgba(255,255,255,0.7);
   }
 }
 

@@ -103,6 +103,52 @@ const blueBlockProducts = [
 
 const searchInput = document.getElementById('searchInput');
 const suggestionsContainer = document.getElementById('sugerencias');
+const headerActions =
+  document.getElementById('headerActions') ||
+  document.querySelector('.header-actions');
+const mobileSearchContainer =
+  document.getElementById('mobileSearchContainer') ||
+  document.querySelector('.search-container');
+const mobileSearchClose =
+  document.getElementById('mobileSearchClose') ||
+  document.querySelector('.search-close-btn');
+const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+
+function isMobileSearchView() {
+  return mobileMediaQuery.matches;
+}
+
+function setMobileSearchExpanded(expanded) {
+  if (!headerActions || !mobileSearchContainer) {
+    return;
+  }
+
+  headerActions.classList.toggle('search-expanded', expanded);
+  mobileSearchContainer.classList.toggle('is-expanded', expanded);
+
+  if (expanded) {
+    requestAnimationFrame(() => searchInput?.focus());
+  } else {
+    searchInput?.blur();
+    clearSuggestions();
+  }
+}
+
+function closeMobileSearch() {
+  if (!isMobileSearchView()) {
+    return;
+  }
+
+  setMobileSearchExpanded(false);
+}
+
+function openMobileSearch() {
+  if (!isMobileSearchView()) {
+    return;
+  }
+
+  setMobileSearchExpanded(true);
+}
 
 function irProducto(id) {
   window.location.href = `producto.html?id=${id}`;
@@ -170,8 +216,50 @@ if (searchInput && suggestionsContainer) {
   });
 
   searchInput.addEventListener('focus', () => {
+    if (isMobileSearchView()) {
+      openMobileSearch();
+    }
+
     if (searchInput.value.trim()) {
       filterProductsByName(searchInput.value);
+    }
+  });
+
+  if (mobileSearchContainer) {
+    mobileSearchContainer.addEventListener('click', (event) => {
+      const target = event.target;
+
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (target.closest('.search-close-btn')) {
+        return;
+      }
+
+      if (isMobileSearchView()) {
+        openMobileSearch();
+      }
+    });
+  }
+
+  if (mobileSearchClose) {
+    mobileSearchClose.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeMobileSearch();
+    });
+  }
+
+  mobileMediaQuery.addEventListener('change', (event) => {
+    if (!event.matches) {
+      setMobileSearchExpanded(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileSearch();
     }
   });
 
@@ -186,6 +274,7 @@ if (searchInput && suggestionsContainer) {
 
     if (searchContainer && !searchContainer.contains(target)) {
       clearSuggestions();
+      closeMobileSearch();
     }
   });
 }
