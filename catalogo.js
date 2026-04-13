@@ -1,4 +1,4 @@
-const productCards = document.querySelectorAll('.product-card');
+const productContainer = document.getElementById('contenedor-productos');
 const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
 const minPriceInput = document.getElementById('filter-min-price');
 const maxPriceInput = document.getElementById('filter-max-price');
@@ -6,15 +6,12 @@ const clearFiltersButton = document.getElementById('clear-filters');
 const minPriceValue = document.getElementById('price-min-value');
 const maxPriceValue = document.getElementById('price-max-value');
 const priceTrack = document.getElementById('price-slider-track');
-const searchInput = document.getElementById('searchInput');
-const catalogProductsWrap = document.querySelector('.catalog-products-wrap');
 
 const params = new URLSearchParams(window.location.search);
 const categoriaURL = (params.get('categoria') || '').toLowerCase();
 
 const RANGE_STEP = 1000;
 let priceBounds = { min: 0, max: 1000000 };
-let noResultsMessage = null;
 
 function parsePriceFromCard(card) {
   const priceText = Array.from(card.querySelectorAll('p'))
@@ -25,55 +22,65 @@ function parsePriceFromCard(card) {
   return Number.isFinite(numericValue) && numericValue > 0 ? numericValue : 0;
 }
 
-function setupProductCards() {
-  productCards.forEach((card, index) => {
-    const productName = card.querySelector('h3')?.textContent?.trim() || `Producto ${index + 1}`;
-    const productId = index + 1;
-    const productPrice = parsePriceFromCard(card);
+function parseCategoryFromCard(card) {
+  const categoryTag = card.querySelector('p');
+  const rawCategory = categoryTag ? categoryTag.textContent.trim().toLowerCase() : '';
 
-    card.dataset.productId = String(productId);
-    card.dataset.price = String(productPrice);
-    card.dataset.name = productName.toLowerCase();
+  const categoryMap = {
+    'futbol': 'futbol',
+    'basketball': 'basket',
+    'basket': 'basket',
+    'atletismo': 'atletismo',
+    'ciclismo': 'ciclismo',
+    'tenis': 'tenis'
+  };
 
-    if (!card.querySelector('.product-card-link')) {
-      const cardLink = document.createElement('a');
-      cardLink.href = `producto.html?id=${productId}`;
-      cardLink.className = 'product-card-link';
-      cardLink.setAttribute('aria-label', `Ver detalle de ${productName}`);
-      card.appendChild(cardLink);
-    }
-  });
-
-  const prices = Array.from(productCards)
-    .map((card) => Number(card.dataset.price || '0'))
-    .filter((price) => Number.isFinite(price) && price > 0);
-
-  const minBound = prices.length ? Math.min(...prices) : 0;
-  const maxBound = prices.length ? Math.max(...prices) : 1000000;
-
-  priceBounds = { min: minBound, max: maxBound };
-
-  minPriceInput.min = String(minBound);
-  minPriceInput.max = String(maxBound);
-  minPriceInput.step = String(RANGE_STEP);
-  minPriceInput.value = String(minBound);
-
-  maxPriceInput.min = String(minBound);
-  maxPriceInput.max = String(maxBound);
-  maxPriceInput.step = String(RANGE_STEP);
-  maxPriceInput.value = String(maxBound);
-
-  updatePriceUI(minBound, maxBound);
-
-  noResultsMessage = document.createElement('p');
-  noResultsMessage.className = 'no-results';
-  noResultsMessage.textContent = 'No se encontraron productos';
-  noResultsMessage.hidden = true;
-  catalogProductsWrap.appendChild(noResultsMessage);
+  return categoryMap[rawCategory] || rawCategory;
 }
 
 function formatCop(value) {
   return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+}
+
+const productos = Array.from(document.querySelectorAll('.product-card')).map((card, index) => {
+  const id = index + 1;
+  const nombre = card.querySelector('h3')?.textContent?.trim() || `Producto ${id}`;
+  const imagen = card.querySelector('img')?.src || '';
+  const categoria = parseCategoryFromCard(card);
+  const precio = parsePriceFromCard(card);
+
+  return {
+    id,
+    nombre,
+    imagen,
+    categoria,
+    precio
+  };
+});
+
+function renderProductos(lista) {
+  if (!lista.length) {
+    productContainer.innerHTML = '<p class="no-results">No se encontraron productos</p>';
+    return;
+  }
+
+  productContainer.innerHTML = lista.map((p) => `
+    <article class="login-form product-card card-producto" data-category="${p.categoria}" onclick="irProducto(${p.id})" style="padding: 0; max-width: none; overflow: hidden; position: relative; cursor: pointer;">
+      <button type="button" aria-label="Agregar ${p.nombre} a favoritos" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: 0; border-radius: 999px; background: rgba(255,255,255,0.9); box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; color: #6a7282; font-size: 16px;">♡</button>
+      <img src="${p.imagen}" alt="${p.nombre}" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
+      <div style="padding: 12px 16px 16px; background: #f3f4f6;">
+        <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">${p.categoria.toUpperCase()}</p>
+        <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">${p.nombre}</h3>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">${formatCop(p.precio)} COP</p>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function irProducto(id) {
+  window.location.href = `producto.html?id=${id}`;
 }
 
 function updatePriceTrack(minPrice, maxPrice) {
@@ -107,38 +114,23 @@ function normalizeRangeValues(changedControl) {
   return { minValue, maxValue };
 }
 
-function applyFilters() {
-  const selectedCategories = Array.from(categoryCheckboxes)
-    .filter((checkbox) => checkbox.checked)
-    .map((checkbox) => checkbox.value);
+function aplicarFiltros() {
+  let filtrados = productos;
+
+  const categorias = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+    .map((checkbox) => checkbox.value.toLowerCase());
+
+  if (categorias.length > 0) {
+    filtrados = filtrados.filter((p) => categorias.includes(p.categoria.toLowerCase()));
+  }
 
   const minPrice = Number(minPriceInput.value || priceBounds.min);
   const maxPrice = Number(maxPriceInput.value || priceBounds.max);
-  const searchValue = (searchInput?.value || '').trim().toLowerCase();
-  let visibleCount = 0;
+
+  filtrados = filtrados.filter((p) => p.precio >= minPrice && p.precio <= maxPrice);
 
   updatePriceUI(minPrice, maxPrice);
-
-  productCards.forEach((card) => {
-    const category = card.dataset.category || '';
-    const price = Number(card.dataset.price || '0');
-    const productName = card.dataset.name || '';
-
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(category);
-    const matchesPrice = price >= minPrice && price <= maxPrice;
-    const matchesSearch = !searchValue || productName.includes(searchValue);
-
-    const isVisible = matchesCategory && matchesPrice && matchesSearch;
-    card.style.display = isVisible ? 'block' : 'none';
-
-    if (isVisible) {
-      visibleCount += 1;
-    }
-  });
-
-  if (noResultsMessage) {
-    noResultsMessage.hidden = visibleCount !== 0;
-  }
+  renderProductos(filtrados);
 }
 
 function resetFilters() {
@@ -148,28 +140,46 @@ function resetFilters() {
 
   minPriceInput.value = String(priceBounds.min);
   maxPriceInput.value = String(priceBounds.max);
-  updatePriceUI(priceBounds.min, priceBounds.max);
-  applyFilters();
+  aplicarFiltros();
 }
 
 function bindFilterEvents() {
   categoryCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', applyFilters);
+    checkbox.addEventListener('change', aplicarFiltros);
   });
 
   minPriceInput.addEventListener('input', () => {
     normalizeRangeValues('min');
-    applyFilters();
+    aplicarFiltros();
   });
 
   maxPriceInput.addEventListener('input', () => {
     normalizeRangeValues('max');
-    applyFilters();
+    aplicarFiltros();
   });
 
-  searchInput?.addEventListener('input', applyFilters);
-
   clearFiltersButton.addEventListener('click', resetFilters);
+}
+
+function setupPriceBounds() {
+  const prices = productos
+    .map((producto) => producto.precio)
+    .filter((price) => Number.isFinite(price) && price > 0);
+
+  const minBound = prices.length ? Math.min(...prices) : 0;
+  const maxBound = prices.length ? Math.max(...prices) : 1000000;
+
+  priceBounds = { min: minBound, max: maxBound };
+
+  minPriceInput.min = String(minBound);
+  minPriceInput.max = String(maxBound);
+  minPriceInput.step = String(RANGE_STEP);
+  minPriceInput.value = String(minBound);
+
+  maxPriceInput.min = String(minBound);
+  maxPriceInput.max = String(maxBound);
+  maxPriceInput.step = String(RANGE_STEP);
+  maxPriceInput.value = String(maxBound);
 }
 
 function applyCategoryFromUrl() {
@@ -182,7 +192,9 @@ function applyCategoryFromUrl() {
   });
 }
 
-setupProductCards();
+window.irProducto = irProducto;
+
+setupPriceBounds();
 bindFilterEvents();
 applyCategoryFromUrl();
-applyFilters();
+aplicarFiltros();
