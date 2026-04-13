@@ -105,6 +105,7 @@ https://www.figma.com/design/lbG5BPprxakxFlhZ7QTuT4/Blue-Block--Mockup-?node-id=
 
 🗄️ 6. Diseño de Base de Datos
 Tablas principales
+<img width="1920" height="1080" alt="Diagrama Entidad-Relación (Base de Datos) BlueBlock - eCommerce Calzado Deportivo" src="https://github.com/user-attachments/assets/9a2cde0f-82ab-43d5-a98c-867c7f1c60aa" />
 
 USUARIO
 Contiene la información de los usuarios registrados en la plataforma.
