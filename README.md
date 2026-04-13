@@ -130,8 +130,55 @@ Campos: id_pedido, id_producto, cantidad, precio_unitario.
 
 🧩 7. Documentación del Sistema
 
-Explicar brevemente qué contiene cada carpeta.
+Archivos principales:
+
+index.html →
+Página principal (landing page) donde se muestra la bienvenida y acceso a categorías.
+
+catalogo.html →
+Página que muestra todos los productos disponibles con filtros por categoría y precio.
+
+producto.html →
+Vista detallada de cada producto (imagen, precio, talla, etc).
+
+carrito.html →
+Página del carrito de compras donde se visualizan los productos seleccionados.
+
+checkout.html →
+Página de pago donde el usuario ingresa sus datos y confirma la compra.
+
+login.html →
+Página para iniciar sesión.
+
+register.html →
+Página para crear una cuenta.
+
+Archivos JavaScript:
+
+catalogo.js →
+Maneja la lógica de visualización de productos y filtros.
+
+producto.js →
+Controla la información dinámica de cada producto.
+
+carrito.js →
+Gestiona los productos agregados al carrito.
+
+checkout.js →
+Maneja el resumen del pedido y lógica de compra.
+
+search.js →
+Controla el funcionamiento del buscador y sugerencias.
+
+Estilos:
+
+style.css →
+Archivo principal de estilos del proyecto (diseño general, layout, responsive, etc).
 
 🚀 8. Instalación y Ejecución
 
-Explicar cómo correr el proyecto.
+Este proyecto se encuentra desplegado en GitHub Pages, por lo que no requiere instalación local.
+
+Puedes acceder directamente a la aplicación en el siguiente enlace:
+
+https://tecnologias2026-1.github.io/Blue-Block/
