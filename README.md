@@ -16,27 +16,18 @@ El sistema integrará funcionalidades como catálogo filtrable, carrito de compr
 
 🌍 2. Contexto de Uso
 
-El sistema está diseñado para dos tipos principales de usuarios:
+La plataforma está orientada a usuarios interesados en adquirir calzado deportivo mediante un entorno digital. Está pensada principalmente para jóvenes y adultos familiarizados con el uso de páginas web, que buscan una experiencia de compra ágil, sencilla y accesible desde cualquier dispositivo.
 
-👤 Clientes
+El acceso al sistema es abierto, por lo que cualquier visitante puede navegar libremente por el catálogo, visualizar productos y explorar las distintas categorías disponibles como fútbol, baloncesto, atletismo, ciclismo y tenis, sin necesidad de iniciar sesión.
 
-Personas interesadas en comprar calzado deportivo en línea. Podrán:
+No obstante, para llevar a cabo una compra, es necesario que el usuario cree una cuenta registrando un correo electrónico y una contraseña. Una vez autenticado, el usuario podrá interactuar con las funcionalidades principales del sistema, tales como:
 
-Registrarse en la plataforma
-Explorar el catálogo de productos
-Filtrar calzado por deporte o categoría
-Agregar productos al carrito
-Realizar compras en línea
-Consultar el estado de sus pedidos
+- Añadir productos al carrito
+- Elegir talla y cantidad de cada artículo
+- Revisar el resumen de la compra
+- Finalizar el proceso de pago de forma segura
 
-
-🛠️ Administradores
-
-Usuarios encargados de la gestión del sistema. Sus funciones incluyen:
-
-Administrar productos del catálogo
-Gestionar pedidos realizados por los clientes
-Supervisar el funcionamiento general de la tienda
+El sistema ha sido diseñado con un enfoque centrado en el usuario, priorizando la facilidad de uso, la claridad en la navegación y una experiencia de compra eficiente.
 
 📋 3. Requerimientos del Sistema
 
