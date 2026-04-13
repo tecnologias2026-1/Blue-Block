@@ -1406,6 +1406,35 @@ article.login-form[data-product-id] button[aria-label*="favoritos"] {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.catalog-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.catalog-stars {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #e5e7eb;
+}
+
+.catalog-stars::before {
+  content: "⭐⭐⭐⭐⭐";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--star-fill, 0%);
+  overflow: hidden;
+}
+
+.catalog-rating-text {
+  color: #4a5565;
+  font-size: 14px;
+}
+
 .no-results {
   margin: 24px 0 0;
   padding: 20px;

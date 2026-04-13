@@ -38,6 +38,38 @@ function parseCategoryFromCard(card) {
   return categoryMap[rawCategory] || rawCategory;
 }
 
+function parseRatingFromCard(card) {
+  const ratingText = Array.from(card.querySelectorAll('span'))
+    .map((node) => node.textContent?.trim() || '')
+    .find((text) => /^\d+(\.\d+)?\s*\(\d+\)$/.test(text));
+
+  if (!ratingText) {
+    return { value: null, count: null };
+  }
+
+  const match = ratingText.match(/^(\d+(?:\.\d+)?)\s*\((\d+)\)$/);
+  if (!match) {
+    return { value: null, count: null };
+  }
+
+  const value = Number(match[1]);
+  const count = Number(match[2]);
+
+  return {
+    value: Number.isFinite(value) ? value : null,
+    count: Number.isFinite(count) ? count : null
+  };
+}
+
+function getStarFillPercent(ratingValue) {
+  if (!Number.isFinite(ratingValue)) {
+    return 0;
+  }
+
+  const clampedValue = Math.max(0, Math.min(5, ratingValue));
+  return (clampedValue / 5) * 100;
+}
+
 function formatCop(value) {
   return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
 }
@@ -48,13 +80,16 @@ const productos = Array.from(document.querySelectorAll('.product-card')).map((ca
   const imagen = card.querySelector('img')?.src || '';
   const categoria = parseCategoryFromCard(card);
   const precio = parsePriceFromCard(card);
+  const rating = parseRatingFromCard(card);
 
   return {
     id,
     nombre,
     imagen,
     categoria,
-    precio
+    precio,
+    ratingValue: rating.value,
+    ratingCount: rating.count
   };
 });
 
@@ -66,11 +101,15 @@ function renderProductos(lista) {
 
   productContainer.innerHTML = lista.map((p) => `
     <article class="login-form product-card card-producto" data-category="${p.categoria}" onclick="irProducto(${p.id})" style="padding: 0; max-width: none; overflow: hidden; position: relative; cursor: pointer;">
-      <button type="button" aria-label="Agregar ${p.nombre} a favoritos" style="position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: 0; border-radius: 999px; background: rgba(255,255,255,0.9); box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; color: #6a7282; font-size: 16px;">♡</button>
       <img src="${p.imagen}" alt="${p.nombre}" style="width: 100%; height: 300px; object-fit: cover; display: block;" />
       <div style="padding: 12px 16px 16px; background: #f3f4f6;">
         <p style="margin: 0 0 8px; color: #0ea5e9; font-size: 12px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">${p.categoria.toUpperCase()}</p>
         <h3 style="margin: 0 0 6px; color: #0a0a0a; font-size: 34px; font-weight: 700; line-height: 1.15;">${p.nombre}</h3>
+        ${Number.isFinite(p.ratingValue) ? `
+        <div class="catalog-rating-row" aria-label="Calificacion ${p.ratingValue.toFixed(1)} de 5">
+          <span class="catalog-stars" style="--star-fill: ${getStarFillPercent(p.ratingValue)}%;" aria-hidden="true">⭐⭐⭐⭐⭐</span>
+          <span class="catalog-rating-text">${p.ratingValue.toFixed(1)}${Number.isFinite(p.ratingCount) ? ` (${p.ratingCount})` : ''}</span>
+        </div>` : ''}
         <div style="display: flex; align-items: center; gap: 12px;">
           <p style="margin: 0; color: #101828; font-size: 34px; font-weight: 700; line-height: 1.1;">${formatCop(p.precio)} COP</p>
         </div>
