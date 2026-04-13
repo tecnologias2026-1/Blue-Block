@@ -27,7 +27,7 @@ function parseCategoryFromCard(card) {
   const rawCategory = categoryTag ? categoryTag.textContent.trim().toLowerCase() : '';
 
   const categoryMap = {
-    'futbol': 'futbol',
+    'fútbol': 'futbol',
     'basketball': 'basket',
     'basket': 'basket',
     'atletismo': 'atletismo',
