@@ -3,8 +3,11 @@
 Plataforma de comercio electrónico enfocada en la venta de calzado deportivo, diseñada para permitir a los usuarios explorar productos, filtrarlos según sus necesidades, agregarlos al carrito y realizar compras de forma rápida y segura desde una aplicación web.
 
 👥 Integrantes
+
 Juan José Cortázar Acosta – 1202740
+
 Juan David López Herrera – 1202726
+
 🎯 1. Objetivo General
 
 Desarrollar una plataforma de eCommerce de calzado deportivo que permita a los usuarios buscar, seleccionar y comprar productos de manera rápida, segura y accesible desde dispositivos web y móviles.
@@ -25,6 +28,8 @@ Filtrar calzado por deporte o categoría
 Agregar productos al carrito
 Realizar compras en línea
 Consultar el estado de sus pedidos
+
+
 🛠️ Administradores
 
 Usuarios encargados de la gestión del sistema. Sus funciones incluyen:
