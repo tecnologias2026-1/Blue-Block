@@ -50,21 +50,23 @@ RF03: El sistema debe mostrar el catálogo de calzado deportivo.
 
 RF04: El usuario debe poder filtrar productos por deporte.
 
-RF05: El sistema debe permitir visualizar el detalle de cada producto.
+RF05: El usuario debe poder filtrar productos por precio.
 
-RF06: El usuario debe poder agregar productos al carrito.
+RF06: El sistema debe permitir visualizar el detalle de cada producto.
 
-RF07: El usuario debe poder modificar cantidades o eliminar productos del carrito.
+RF07: El usuario debe poder agregar productos al carrito.
 
-RF08: El sistema debe calcular automáticamente el total de la compra.
+RF08: El usuario debe poder modificar cantidades o eliminar productos del carrito.
 
-RF09: El usuario debe poder realizar el proceso de checkout.
+RF09: El sistema debe calcular automáticamente el total de la compra.
 
-RF10: El sistema debe permitir pagos electrónicos mediante una pasarela de pago.
+RF10: El usuario debe poder realizar el proceso de checkout.
 
-RF11: El sistema debe generar una confirmación del pedido.
+RF11: El sistema debe permitir pagos electrónicos mediante una pasarela de pago.
 
-RF12: El usuario debe poder consultar el estado de sus pedidos.
+RF12: El sistema debe generar una confirmación del pedido.
+
+RF13: El usuario debe poder consultar el estado de sus pedidos.
 
 3.2 Requerimientos No Funcionales
 
