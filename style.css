@@ -456,10 +456,39 @@ header {
   white-space: nowrap;
 }
 
+.category-content .category-cta {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
 .category-content a::after {
   content: '›';
   font-size: 1.1rem;
   line-height: 0;
+}
+
+.category-content .category-cta::after {
+  content: '›';
+  font-size: 1.1rem;
+  line-height: 0;
+}
+
+.categoria-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.categoria-card:hover {
+  transform: scale(1.03);
+  cursor: pointer;
 }
 
 .footer {

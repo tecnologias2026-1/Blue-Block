@@ -7,6 +7,9 @@ const minPriceValue = document.getElementById('price-min-value');
 const maxPriceValue = document.getElementById('price-max-value');
 const priceTrack = document.getElementById('price-slider-track');
 
+const params = new URLSearchParams(window.location.search);
+const categoriaURL = (params.get('categoria') || '').toLowerCase();
+
 const RANGE_STEP = 1000;
 let priceBounds = { min: 0, max: 1000000 };
 
@@ -144,6 +147,17 @@ function bindFilterEvents() {
   clearFiltersButton.addEventListener('click', resetFilters);
 }
 
+function applyCategoryFromUrl() {
+  if (!categoriaURL) {
+    return;
+  }
+
+  categoryCheckboxes.forEach((checkbox) => {
+    checkbox.checked = checkbox.value.toLowerCase() === categoriaURL;
+  });
+}
+
 setupProductCards();
 bindFilterEvents();
+applyCategoryFromUrl();
 applyFilters();
