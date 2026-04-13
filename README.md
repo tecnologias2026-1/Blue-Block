@@ -32,8 +32,11 @@ Usuarios encargados de la gestión del sistema. Sus funciones incluyen:
 Administrar productos del catálogo
 Gestionar pedidos realizados por los clientes
 Supervisar el funcionamiento general de la tienda
+
 📋 3. Requerimientos del Sistema
+
 3.1 Requerimientos Funcionales
+
 RF01: El sistema debe permitir el registro de usuarios.
 RF02: El sistema debe permitir el inicio y cierre de sesión.
 RF03: El usuario debe poder editar su perfil.
@@ -47,7 +50,9 @@ RF10: El usuario debe poder realizar el proceso de checkout.
 RF11: El sistema debe permitir pagos electrónicos mediante una pasarela de pago.
 RF12: El sistema debe generar una confirmación del pedido.
 RF13: El usuario debe poder consultar el estado de sus pedidos.
+
 3.2 Requerimientos No Funcionales
+
 RNF01: El sistema debe ser responsive, adaptándose a dispositivos móviles, tablets y computadoras.
 RNF02: El sistema debe garantizar tiempos de carga rápidos para mejorar la experiencia del usuario.
 RNF03: La interfaz debe ser clara, intuitiva y fácil de usar.
@@ -56,7 +61,10 @@ RNF05: El sistema debe integrarse de manera confiable con pasarelas de pago exte
 RNF06: El sistema debe manejar correctamente errores y mostrar mensajes claros al usuario.
 RNF07: El sistema debe mantener la consistencia e integridad de la información en la base de datos.
 RNF08: El sistema debe ofrecer una experiencia de compra fluida y continua.
+
 🧠 4. Diagramas UML
+
+
 Diagrama de Casos de Uso
 
 Este diagrama representa las interacciones entre los usuarios (Cliente y Administrador) y el sistema, mostrando las funcionalidades principales como registro, exploración del catálogo, gestión del carrito y realización de compras.
