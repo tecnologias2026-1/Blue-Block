@@ -127,24 +127,9 @@ Relaciona cada pedido con los productos incluidos en la compra.
 Campos: id_pedido, id_producto, cantidad, precio_unitario.
 
 🧩 7. Documentación del Sistema
-Estructura de Carpetas
-/css
-/js
-/assets
 
-/css
-Contiene los archivos de estilos que definen la apariencia visual de la plataforma.
-
-/js
-Incluye los scripts de JavaScript que manejan la lógica del sistema y la interacción con el usuario.
-
-/assets
-Almacena recursos estáticos como imágenes, íconos y archivos multimedia utilizados en la interfaz.
+Explicar brevemente qué contiene cada carpeta.
 
 🚀 8. Instalación y Ejecución
-Clonar el repositorio:
-git clone https://github.com/usuario/BlueBlock.git
-Abrir la carpeta del proyecto.
-Ejecutar el proyecto desde un servidor local (por ejemplo con Live Server o XAMPP).
-Abrir el navegador en:
-http://localhost
+
+Explicar cómo correr el proyecto.
